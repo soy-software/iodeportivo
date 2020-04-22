@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Editar Categoría'])
 @section('breadcrumbs', Breadcrumbs::render('editarCategoria',$cat))
 @section('content')
 <div class="container">

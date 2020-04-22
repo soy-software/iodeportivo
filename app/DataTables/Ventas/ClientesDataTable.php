@@ -52,13 +52,6 @@ class ClientesDataTable extends DataTable
                     ->ajax(['data' => 'function(d) { d.table = "posts"; }'])
                     ->parameters($this->getBuilderParameters())
                     ->orderBy(1);
-                    // ->buttons(
-                    //     Button::make('create'),
-                    //     Button::make('export'),
-                    //     Button::make('print'),
-                    //     Button::make('reset'),
-                    //     Button::make('reload')
-                    // );
     }
 
     /**

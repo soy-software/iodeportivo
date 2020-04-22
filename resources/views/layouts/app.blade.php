@@ -7,10 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ ucfirst($title ?? '') }} | {{ config('app.name', 'Clinica-Utc') }}</title>
 
     <!-- MDB icon -->
-    <link rel="icon" href="{{ asset('mdb/img/mdb-favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('fontawesome-free-5.12.1-web/css/all.min.css') }}">
     <!-- Google Fonts Roboto -->
@@ -74,9 +75,18 @@
                                 <span class="sr-only">(current)</span>
                               </a>
                         </li>
+
+
+                        @can('G. Usuarios')
+                        
                         <li class="nav-item" id="menuUsuarios">
                             <a class="nav-link" href="{{ route('usuarios')}}">Usuarios</a>
                         </li>
+
+                        @endcan
+
+                        @can('G. Almacén')
+                            
                         <li class="nav-item dropdown" id="almacen">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
                               aria-haspopup="true" aria-expanded="false">Almacén
@@ -87,16 +97,27 @@
                             </div>
                         </li>
 
+                        @endcan
+
+
+                        @can('G. Ventas')
+                            
                         <li class="nav-item dropdown" id="ventas">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-556" data-toggle="dropdown"
                               aria-haspopup="true" aria-expanded="false">Ventas
                             </a>
                             <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-556">
                               <a class="dropdown-item" id="facturas" href="{{ route('facturas') }}">Facturas</a>
-                              <a class="dropdown-item" id="creditos" href="">Créditos</a>
                             </div>
                         </li>
 
+                        @endcan
+
+                        @role('Administrador')
+                        <li class="nav-item" id="menuRolesPermisos">
+                            <a class="nav-link" href="{{ route('roles')}}">Roles y permisos</a>
+                        </li>
+                        @endrole
                         
                         
                         
@@ -108,7 +129,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item" id="menuLogin">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))

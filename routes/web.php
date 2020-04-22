@@ -66,10 +66,17 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/facturas-estado', 'Facturas@estado')->name('estadoFactura');
         Route::get('/facturas-buscar-fecha-a-fecha', 'Facturas@buscarFechaFecha')->name('buscarFechaFechaFactura');
         
-        
-        
+    });
+
+
+    Route::namespace('Sistema')->group(function () {
+        // roles
+        Route::get('/roles', 'Roles@index')->name('roles');
+        Route::post('/roles-guardar', 'Roles@guardar')->name('guardarRol');
+        Route::get('/roles-eliminar/{id}', 'Roles@eliminar')->name('eliminarRol');
+        // permisos
+        Route::get('/permisos/{idRol}', 'Permisos@index')->name('permisos');
+        Route::post('/permisos-sincronizar', 'Permisos@sincronizar')->name('sincronizarPermiso');
     });
     
-    
-
 });

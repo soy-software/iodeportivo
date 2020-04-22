@@ -1,19 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Inicio'])
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    CALZADO DEPORTIVO
-                </div>
-
-                <div class="card-body">
-                    PARA DAMAS, CABALLEROS, NIÑOS Y NIÑAS.
-                </div>
-            </div>
-        </div>
+<div style="height: 100vh">
+    <div class="flex-center flex-column">
+      <h5 class="animated fadeIn mb-3">
+        Gracias por usar nuestro producto. Nos alegra que estés con nosotros.
+      </h5>
+      <p class="animated fadeIn text-muted">
+          @soysoftware
+      </p>
     </div>
-</div>
+  </div>
 @endsection

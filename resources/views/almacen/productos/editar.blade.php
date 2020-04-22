@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Editar Producto'])
 @section('breadcrumbs', Breadcrumbs::render('editarProducto',$pro))
 @section('content')
 <div class="container">

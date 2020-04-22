@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Nuevo Usuario'])
 @section('breadcrumbs', Breadcrumbs::render('nuevoUsuario'))
 @section('content')
 <div class="container">

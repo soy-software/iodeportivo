@@ -49,15 +49,7 @@ class UsuariosDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('frtip')
-                    ->orderBy(1)
-                    // ->buttons(
-                    //     Button::make('create'),
-                    //     Button::make('export'),
-                    //     Button::make('print'),
-                    //     Button::make('reset'),
-                    //     Button::make('reload')
-                    // );
-                    
+                    ->orderBy(1)                    
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -77,6 +69,7 @@ class UsuariosDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('apellidos'),
             Column::make('nombres'),
+            Column::make('email'),
             Column::make('identificacion')->title('Identificación'),
             Column::make('telefono')->title('Teléfono'),
             Column::make('direccion')->title('Dirección'),

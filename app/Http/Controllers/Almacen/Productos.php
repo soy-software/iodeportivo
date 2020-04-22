@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class Productos extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:G. Almacén']);
+    }
+    
     public function index(ProdutosDataTable $dataTable)
     {
         return $dataTable->render('almacen.productos.index');

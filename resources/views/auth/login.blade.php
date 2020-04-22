@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Ingresar'])
+@section('breadcrumbs', Breadcrumbs::render('login'))
 
 @section('content')
 <div class="container">
@@ -70,4 +71,11 @@
         </div>
     </div>
 </div>
+
+@prepend('linksPie')
+    <script>
+    $('#menuLogin').addClass('active');
+    </script>
+@endprepend
+
 @endsection

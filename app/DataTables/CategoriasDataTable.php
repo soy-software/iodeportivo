@@ -51,13 +51,6 @@ class CategoriasDataTable extends DataTable
                     ->dom('frtip')
                     ->orderBy(1)
                     ->parameters($this->getBuilderParameters());
-                    // ->buttons(
-                    //     Button::make('create'),
-                    //     Button::make('export'),
-                    //     Button::make('print'),
-                    //     Button::make('reset'),
-                    //     Button::make('reload')
-                    // );
     }
 
     /**

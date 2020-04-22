@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\DB;
 use PDF;
 class Facturas extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:G. Ventas']);
+    }
+
     public function index(FacturasDataTable $dataTable)
     {
         return $dataTable->render('ventas.facturas.index');

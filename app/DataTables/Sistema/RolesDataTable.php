@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\Sistema;
 
-use App\Models\Producto;
+use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProdutosDataTable extends DataTable
+class RolesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,22 +21,18 @@ class ProdutosDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('foto',function($pro){
-                return view('almacen.productos.foto',['pro'=>$pro])->render();
-            })
-            ->addColumn('action', function($pro){
-                return view('almacen.productos.opciones',['pro'=>$pro])->render();
-            })
-            ->rawColumns(['action','foto']);
+            ->addColumn('action', function($rol){
+                return view('sistema.roles.acciones',['rol'=>$rol])->render();
+            });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \Models/Producto $model
+     * @param \App\Sistema/Role $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Producto $model)
+    public function query(Role $model)
     {
         return $model->newQuery();
     }
@@ -49,7 +45,7 @@ class ProdutosDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('produtos-table')
+                    ->setTableId('sistema-roles-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('frtip')
@@ -69,20 +65,10 @@ class ProdutosDataTable extends DataTable
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
-                  ->searchable(false)
-                  ->title('Opciones')
-                  ->addClass('text-center'),
-            Column::make('foto')->searchable(false),
-            Column::make('codigo')->title('Código'),
-            Column::make('nombre'),
-            Column::make('cantidad'),
-            Column::make('precio_compra'),
-            Column::make('precio_venta'),
-            Column::make('talla'),
-            Column::make('color'),
-            Column::make('descripcion')
-            ->title('Descripción')
-            ->searchable(false),
+                  ->addClass('text-center')
+                  ->title('Acciones'),
+            Column::make('name')
+            ->title('Rol'),
         ];
     }
 
@@ -93,6 +79,6 @@ class ProdutosDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Produtos_' . date('YmdHis');
+        return 'Sistema_Roles_' . date('YmdHis');
     }
 }

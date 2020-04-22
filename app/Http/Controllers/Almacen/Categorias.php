@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class Categorias extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:G. Almacén']);
+    }
+    
     public function index(CategoriasDataTable $dataTable)
     {
         return $dataTable->render('almacen.categorias.index');

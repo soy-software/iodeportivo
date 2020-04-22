@@ -1,4 +1,18 @@
 <?php
+// Inicio
+Breadcrumbs::for('inicio', function ($trail) {
+    $trail->push('Inicio', url('/'));
+});
+Breadcrumbs::for('login', function ($trail) {
+    $trail->parent('inicio');
+    $trail->push('Ingresar', url('/login'));
+});
+// reset pasword
+Breadcrumbs::for('resetPassword', function ($trail) {
+    $trail->parent('login');
+    $trail->push('Restablecer contraseña', url('/password/reset'));
+});
+
 
 // Inicio
 Breadcrumbs::for('home', function ($trail) {
@@ -73,4 +87,15 @@ Breadcrumbs::for('verFactura', function ($trail,$factura) {
 Breadcrumbs::for('buscarFechaFechaFactura', function ($trail) {
     $trail->parent('facturas');
     $trail->push('Buscar facturas', route('buscarFechaFechaFactura'));
+});
+
+
+// Roles y permisos
+Breadcrumbs::for('roles', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Roles', route('roles'));
+});
+Breadcrumbs::for('permisos', function ($trail,$rol) {
+    $trail->parent('roles');
+    $trail->push('Permisos', route('permisos',$rol->id));
 });

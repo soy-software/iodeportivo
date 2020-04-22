@@ -1,9 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Nueva Venta'])
 @section('breadcrumbs', Breadcrumbs::render('nuevaFactura'))
 @section('content')
-
-
-
 
 <div class="container-fluid">
     

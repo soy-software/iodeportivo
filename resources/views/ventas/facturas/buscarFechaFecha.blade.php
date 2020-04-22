@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Buscar ventas'])
 @section('breadcrumbs', Breadcrumbs::render('buscarFechaFechaFactura'))
 @section('content')
 <div class="container-fluid">

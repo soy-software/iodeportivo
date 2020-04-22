@@ -11,6 +11,11 @@ use Spatie\Permission\Models\Role;
 
 class Usuarios extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:G. Usuarios']);
+    }
+
     public function index(UsuariosDataTable $dataTable)
     {
         return $dataTable->render('usuarios.index');

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Detalle de factura'])
 @section('breadcrumbs', Breadcrumbs::render('verFactura',$factura))
 @section('content')
 <div class="container">
